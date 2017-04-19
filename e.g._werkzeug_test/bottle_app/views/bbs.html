@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>テスト掲示板 | bottle app</title>
+    </head>
+    <body>
+        <h1>テスト掲示板</h1>
+        <form action="/" method="POST">
+            <div>
+                <label for="title">タイトル</label>
+                <input type="text" name="title" size="60">
+            </div>
+            <div>
+                <label for="handle">ハンドル</label>
+                <input type="text" name="handle" value="{{handle}}">
+            </div>
+            <div>
+                <label for="message">メッセージ</label>
+                <textarea name="message" rows="4" cols="60"></textarea>
+            </div>
+            <div>
+                <input type="submit">
+                <a href="/delete_cookie">Cookie削除</a>
+            </div>
+        </form>
+
+        <hr>
+
+        {% for m in messages %}
+            <p>
+                「{{ m.title }}」&nbsp;&nbsp;
+                {{ m.handle }} さん&nbsp;&nbsp
+                {{ m.created_at }}
+            </p>
+           <p>{{ m.message }}</p>
+          <hr>
+        {% endfor %}
+
+    </body>
+</html>
